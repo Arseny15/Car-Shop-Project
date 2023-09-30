@@ -2,7 +2,7 @@
 
 
 # CarShop-Application
-## An application that provides assistance in selecting a car to buy or to view (by car brand name, color, car year, kilometers) for general users.
+## An application that provides assistance in selecting a car to buy or to view (by car brand name, price, color, car year, km) for general users.
 
 
 **Why is this project of interest to you?**
@@ -23,16 +23,17 @@ Also, it's really convinient to find cars by using different settings.
 
 *For car sellers*:
 
-- Cars for sale ((by car brand name, color,car year, km used)
+- Cars for sale (by car brand name, price, color, car year, km used)
 - Remove their posts.
 
 
 *For basic users*:
 
 - Find a car by car brand
+- Find a car by price
 - Find a car by color
 - Find a car by car year
-- Sort the result in terms of kilometers
+- Sort the result in terms of km
 - Check all options avaliable
 
 
