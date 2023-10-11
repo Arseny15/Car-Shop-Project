@@ -23,7 +23,7 @@ Also, it's really convinient to find cars by using different settings.
 
 *For car sellers*:
 
-- Cars for sale (by car brand name, price, color, car year, km used)
+- Add cars for sale (by car brand name, price, color, car year, km used)
 - Remove their posts.
 
 

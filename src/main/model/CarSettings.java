@@ -16,7 +16,10 @@ public class CarSettings {
         this.kmUsed = kmUsed;
     }
 
-
+    public String toString() {
+        return "Car Brand: " + carBrand + ", Price: $" + price + ", Color: " + color + ", Year: " + carYear + ", Mileage: "
+                + kmUsed;
+    }
 
     public String getCarBrand() {
         return this.carBrand;
