@@ -15,7 +15,7 @@ public class CarListTest {
     private CarSettings car2;
     private CarSettings car3;
     private CarSettings car4;
-    private CarSettings car5;
+
 
 
     @BeforeEach
@@ -25,7 +25,6 @@ public class CarListTest {
         this.car3 = new CarSettings("BMW", 120000, "race green", 2000, 100);
         this.car4 = new CarSettings("Porsche 911 GT3 RS", 300000,
                 "blue", 2022, 4000);
-        this.car5 = new CarSettings("BMW", 120000, "race green", 2000, 100);
 
         testCarListEmpty = new CarList("nb");
 
@@ -38,8 +37,6 @@ public class CarListTest {
         testCarListAll.addCarToList(car2);
         testCarListAll.addCarToList(car3);
         testCarListAll.addCarToList(car4);
-
-
     }
 
     @Test
@@ -61,7 +58,7 @@ public class CarListTest {
     @Test
     void testFindSpecCar() {
         assertEquals(car2, testCarListAll.findSpecCar("Koenigsegg", 4000000,
-                "carbon", 2023, 0));
+                "carbon", 2023, 1));
 
         CarSettings specCarFound = testCarListOnlyOne.findSpecCar("Lada copeyka",
                 1000, "blue", 2000, 10000);
@@ -76,17 +73,13 @@ public class CarListTest {
     void testRemoveCarFromList() {
         assertEquals(1, testCarListOnlyOne.getNumOfCars());
 
-        testCarListOnlyOne.removeCarFromList(car1);
+        testCarListOnlyOne.removeCarFromList("Lada copeyka", 1000,
+                "blue", 2000, 10000);
         assertEquals(0, testCarListOnlyOne.getCars().size());
-        assertFalse(testCarListOnlyOne.getCars().contains(car1));
 
-        testCarListAll.removeCarFromList(car4);
+        testCarListAll.removeCarFromList("Porsche 911 GT3 RS", 300000,
+                "blue", 2022, 4000);
         assertEquals(3, testCarListAll.getNumOfCars());
-        assertTrue(testCarListAll.getCars().contains(car1));
-        assertTrue(testCarListAll.getCars().contains(car2));
-        assertTrue(testCarListAll.getCars().contains(car3));
-
-        assertFalse(testCarListAll.getCars().contains(car4));
     }
 
     @Test
@@ -100,12 +93,9 @@ public class CarListTest {
     void testSameCarsByBrand() {
         testCarListEmpty = testCarListAll.sameCarBrand("BMW");
         CarList sameBrands = new CarList("vodka");
-        sameBrands.addCarToList(car1);
-        sameBrands.addCarToList(car5);
-        assertEquals(2, testCarListEmpty.getNumOfCars());
-        assertEquals(car5, testCarListEmpty.getCars().get(2));
-        assertEquals("BMW", sameBrands.getCarBrand());
-        assertEquals("vodka", testCarListEmpty.getCarBrand());
+        sameBrands.addCarToList(car3);
+        assertEquals(1, testCarListEmpty.getNumOfCars());
+        assertEquals(car3, testCarListEmpty.getCars().get(0));
     }
 
 

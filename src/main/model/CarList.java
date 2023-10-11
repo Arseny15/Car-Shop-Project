@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CarList {
@@ -50,12 +52,9 @@ public class CarList {
 
     // MODIFIES: this
     // EFFECTS: remove car from the list of cars
-    public void removeCarFromList(CarSettings car) {
-        CarSettings specCar = findSpecCar(car.getCarBrand(), car.getPrice(), car.getColor(),
-                car.getCarYear(), car.getKmUsed());
-        if (specCar != null) {
-            this.cars.remove(specCar);
-        }
+    public void removeCarFromList(String carBrand, int price, String color, int carYear, int kmUsed) {
+        CarSettings specCar = findSpecCar(carBrand, price, color, carYear, kmUsed);
+        this.cars.remove(specCar);
     }
 
     public int getNumOfCars() {
@@ -162,7 +161,7 @@ public class CarList {
         }
         return underCarPrice;
     }
-}
+
 
 //    public List<CarSettings> underCarPrice(int carPrice) {
 //        List<CarSettings> underCarPrice = new ArrayList<>();
@@ -174,13 +173,13 @@ public class CarList {
 //        return underCarPrice;
 //    }
 
-
+//
 //    // MODIFIES: this
 //    // EFFECTS: Method to sort the list by kilometers used, with original order stays same
 //    public void sortCarsByKmUsed() {
 //        Comparator<CarSettings> kmUsedComparator = Comparator.comparingInt(CarSettings::getKmUsed);
 //        Collections.sort(cars, kmUsedComparator.thenComparing(Comparator.naturalOrder()));
 //    }
-//}
+}
 
 

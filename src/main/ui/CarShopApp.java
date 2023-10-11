@@ -215,7 +215,7 @@
 //
 //
 //        // EFFECTS: seller removes a cars from list
-//        public void removeCar () {
+//        public void removeCar() {
 //            carList.removeCarFromList();
 //            int numbCars = carList.getNumOfCars();
 //            if (numbCars == carList.getNumOfCars()) {
