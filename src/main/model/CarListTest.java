@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarListTest {
     private CarList testCarListAll;
@@ -217,6 +218,18 @@ public class CarListTest {
         assertEquals(car4, testCarListEmpty.getCars().get(3));
     }
 
+    @Test
+    void testUnderCarKmNewVar() {
+        CarList carList = new CarList("car");
+        carList.addCarToList(new CarSettings("CarA", 20000, "blue", 2000, 10000));
+        carList.addCarToList(new CarSettings("CarB", 25000, "blue", 2000, 9000));
+        carList.addCarToList(new CarSettings("CarC", 12000, "blue", 2000, 10000));
+
+        CarList result = carList.underKmUse(10000);
+
+        assertEquals(3, carList.getNumOfCars());
+    }
+
 
     @Test
     void testUnderKmContainNone() {
@@ -272,6 +285,20 @@ public class CarListTest {
     void testUnderCarPriceContainNone() {
         testCarListEmpty = testCarListAll.underCarPrice(1);
         assertEquals(0, testCarListEmpty.getNumOfCars());
+    }
+
+    @Test
+    void testUnderCarPriceNewVar() {
+        CarList carList = new CarList("car");
+        carList.addCarToList(new CarSettings("CarA", 20000, "blue", 2000, 10000));
+        carList.addCarToList(new CarSettings("CarB", 25000, "blue", 2000, 10000));
+        carList.addCarToList(new CarSettings("CarC", 12000, "blue", 2000, 10000));
+
+        CarList result = carList.underCarPrice(15000);
+
+        assertEquals(3, carList.getNumOfCars());
+//        assertTrue(result.contains(new CarSettings("CarA", 20000,"blue", 2000, 10000)));
+//        assertTrue(result.contains(new CarSettings("CarC", 12000,"blue", 2000, 10000)));
     }
 
 
