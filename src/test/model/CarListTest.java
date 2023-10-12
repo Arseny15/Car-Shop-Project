@@ -1,7 +1,7 @@
 package model;
 
-import model.CarList;
-import model.CarSettings;
+//import model.CarList;
+//import model.CarSettings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

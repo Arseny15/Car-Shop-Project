@@ -7,7 +7,7 @@ public class CarSettings {
     private int carYear;
     private int kmUsed;
 
-    //EFFECTS: make a car with settings (carBrand, color, carYear, price, kilometers)
+    //EFFECTS: construct a car with settings (carBrand, color, carYear, price, kilometers)
     public CarSettings(String carBrand, int price, String color, int carYear, int kmUsed) {
         this.carBrand = carBrand;
         this.price = price;

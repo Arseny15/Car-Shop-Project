@@ -26,7 +26,7 @@ public class CarList {
 
     // EFFECTS: find the same car in the list
     public CarSettings findSpecCar(String carBrand, int price, String color, int carYear, int kmUsed) {
-        for (CarSettings car : this.cars) {
+        for (CarSettings car : cars) {
             if (carBrand.equals(car.getCarBrand()) // string
                     &&
                     price == car.getPrice()
@@ -57,8 +57,8 @@ public class CarList {
     // EFFECTS: return list of all cars with same carBrand
     public CarList sameCarBrand(String carBrand) {
         CarList carsWithSameBrand = new CarList();
-        for (CarSettings car : this.cars) {
-            if (carBrand.equals(car.getCarBrand())) {
+        for (CarSettings car : cars) {
+            if (carBrand == car.getCarBrand()) {
                 carsWithSameBrand.addCarToList(car);
             }
         }
@@ -90,8 +90,8 @@ public class CarList {
     // EFFECTS: return list of all cars with same carColor
     public CarList sameCarColor(String color) {
         CarList carsWithSameColo = new CarList();
-        for (CarSettings colorCar : this.cars) {
-            if (color.equals(colorCar.getColor())) {
+        for (CarSettings colorCar : cars) {
+            if (colorCar.getColor() == color) {
                 carsWithSameColo.addCarToList(colorCar);
             }
         }
@@ -102,7 +102,7 @@ public class CarList {
     // EFFECTS: return list of all cars with given car year
     public CarList carsWithGivenYear(int year) {
         CarList carsSameYear = new CarList();
-        for (CarSettings car : this.cars) {
+        for (CarSettings car : cars) {
             if (car.getCarYear() == year) {
                 carsSameYear.addCarToList(car);
             }
@@ -124,7 +124,7 @@ public class CarList {
     // EFFECTS: return list of all cars under or equal given km used
     public CarList underKmUse(int km) {
         CarList carsUnderMaxKm = new CarList();
-        for (CarSettings car : this.cars) {
+        for (CarSettings car : cars) {
             if (car.getKmUsed() <= km) {
                 carsUnderMaxKm.addCarToList(car);
             }
@@ -147,7 +147,7 @@ public class CarList {
     // EFFECTS: return list of all cars under or equal given price
     public CarList underCarPrice(int carPrice) {
         CarList underCarPrice = new CarList();
-        for (CarSettings car : this.cars) {
+        for (CarSettings car : cars) {
             if (car.getPrice() <= carPrice) {
                 underCarPrice.addCarToList(car);
             }
