@@ -30,7 +30,7 @@ public class CarShopApp {
         this.car4 = new CarSettings("Porsche 911 GT3 RS", 300000,
                 "blue", 2022, 4000);
         input = new Scanner(System.in);
-        carList = new CarList("car");
+        carList = new CarList();
         input.useDelimiter("\n");
         carList.addCarToList(car1);
         carList.addCarToList(car2);
@@ -39,7 +39,7 @@ public class CarShopApp {
     }
 
 
-    // EFFECTS: displays menu: to choose you are user or seller
+    // EFFECTS: displays menu: to choose: you are user or seller
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tu -> users");
@@ -85,10 +85,10 @@ public class CarShopApp {
                 keepGoing = false;
             } else if (command.equals("u")) {
                 displayMenuUser();
-                processCommandUser(command);
+                processCommandUser();
             } else if (command.equals("s")) {
                 displayMenuSellers();
-                processCommandSeller(command);
+                processCommandSeller();
             } else {
                 keepGoing = false;
             }
@@ -106,41 +106,20 @@ public class CarShopApp {
 
     // EFFECTS: show final list of car
     public void showFinal(CarList cars) {
-        Scanner input = new Scanner(System.in);
-        String word = "Car";
         for (CarSettings car : cars.getCars()) {
-            System.out.println(word + ": " + "The brand of car:" + car.getCarBrand() + "\t" + "The price of car: "
-                    + car.getPrice() + "\t" + "The color of car:" + car.getColor() + "\t" + "The year of car:"
-                    + car.getCarYear() + "\t" + "The mileage of car:" + car.getKmUsed() + "\t");
+            System.out.println("Car data: " + "The brand of car: " + car.getCarBrand() + "\t" + "The price of car: "
+                    + car.getPrice() + "\t" + "The color of car: " + car.getColor() + "\t" + "The year of car: "
+                    + car.getCarYear() + "\t" + "The mileage of car: " + car.getKmUsed() + "\t");
         }
     }
 
 
 
-//    // EFFECTS: menu to choose whether to sort or display the list
-//    public void sort() {
-//        System.out.println("Show the list or sort by:");
-//        System.out.println("\ty -> yes, show list");
-//        System.out.println("\tm -> sort by mileage");
-//        input = new Scanner(System.in);
-//        info = input.nextLine();
-//
-//        if (info.equals("y")) {
-//            car.showFinal();
-//        } else if (info.equals("m")) {
-//            car.sortCarsByKmUsed();
-//            car.showFinal();
-//        } else {
-//            System.out.println("Invalid choice. Please try again.");
-//        }
-//    }
-
-
     // EFFECTS: seller adds/removes using CarBrand
     public String getCarBrand() {
-        System.out.println("Car brand:"); // WTF doesn't work
-        input = new Scanner(System.in);
-        info = input.nextLine();
+        System.out.println("Car brand:");
+        input = new Scanner(System.in); // allows to type car brand
+        info = input.nextLine(); // type car brand(info-string)
         return info;
     }
 
@@ -178,6 +157,7 @@ public class CarShopApp {
 
 
     // EFFECTS: seller add cars for sale
+    // (must be different car settings)
     public void addCar() {
         CarSettings car;
         String carBrand = getCarBrand();
@@ -189,15 +169,16 @@ public class CarShopApp {
         car = new CarSettings(carBrand, price, color, carYear, kmUsed);
         carList.addCarToList(car);
         showFinal(carList);
-        if (numbCars == carList.getNumOfCars()) {
-            System.out.println("Cannot post");
+        if (numbCars == carList.getNumOfCars()) { // check if there is such car in the list
+            System.out.println("Cannot post :(");
         } else {
-            System.out.println("Added successfully");
+            System.out.println("Added successfully :)");
         }
     }
 
 
     // EFFECTS: seller removes a cars from list
+    // (to remove car settings should be same as in the list)
     public void removeCar() {
         int numbCars = carList.getNumOfCars();
         String carBrand = getCarBrand();
@@ -207,17 +188,17 @@ public class CarShopApp {
         int kmUsed = getKmUsed();
         carList.removeCarFromList(carBrand, price, color, carYear, kmUsed);
         showFinal(carList);
-        if (numbCars == carList.getNumOfCars()) {
-            System.out.println("This car wasn't found in the list");
+        if (numbCars == carList.getNumOfCars()) { // check if there is such car in the list
+            System.out.println("This car wasn't found in the list!");
         } else {
-            System.out.println("Removed");
+            System.out.println("Car was removed from your list!");
         }
     }
 
     // MODIFIES: this
     // EFFECTS: processes seller command
-    private void processCommandSeller(String command) {
-        command = input.next();
+    private void processCommandSeller() {
+        String command = input.next();
         command = command.toLowerCase();
         if (command.equals("a")) {
             addCar();
@@ -283,8 +264,8 @@ public class CarShopApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processCommandUser(String command) {
-        command = input.next();
+    private void processCommandUser() {
+        String command = input.next();
         command = command.toLowerCase();
         if (command.equals("b")) {
             doCarBrand();

@@ -1,23 +1,15 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class CarList {
     private List<CarSettings> cars;
-    private String name;
 
 
     // EFFECTS: construct a list of cars, no repeat cars
-    public CarList(String name) {
+    public CarList() {
         this.cars = new ArrayList<>();
-        this.name = name;
-    }
-
-    public String getCarBrand() {
-        return this.name;
     }
 
     public List<CarSettings> getCars() {
@@ -57,13 +49,14 @@ public class CarList {
         this.cars.remove(specCar);
     }
 
+    //EFFECTS: return a size of the list = return how many cars in the list
     public int getNumOfCars() {
         return this.cars.size();  // combination of getCars().size()
     }
 
     // EFFECTS: return list of all cars with same carBrand
     public CarList sameCarBrand(String carBrand) {
-        CarList carsWithSameBrand = new CarList("car");
+        CarList carsWithSameBrand = new CarList();
         for (CarSettings car : this.cars) {
             if (carBrand.equals(car.getCarBrand())) {
                 carsWithSameBrand.addCarToList(car);
@@ -96,7 +89,7 @@ public class CarList {
 
     // EFFECTS: return list of all cars with same carColor
     public CarList sameCarColor(String color) {
-        CarList carsWithSameColo = new CarList("car");
+        CarList carsWithSameColo = new CarList();
         for (CarSettings colorCar : this.cars) {
             if (color.equals(colorCar.getColor())) {
                 carsWithSameColo.addCarToList(colorCar);
@@ -108,7 +101,7 @@ public class CarList {
 
     // EFFECTS: return list of all cars with given car year
     public CarList carsWithGivenYear(int year) {
-        CarList carsSameYear = new CarList("car");
+        CarList carsSameYear = new CarList();
         for (CarSettings car : this.cars) {
             if (car.getCarYear() == year) {
                 carsSameYear.addCarToList(car);
@@ -130,7 +123,7 @@ public class CarList {
 
     // EFFECTS: return list of all cars under or equal given km used
     public CarList underKmUse(int km) {
-        CarList carsUnderMaxKm = new CarList("car");
+        CarList carsUnderMaxKm = new CarList();
         for (CarSettings car : this.cars) {
             if (car.getKmUsed() <= km) {
                 carsUnderMaxKm.addCarToList(car);
@@ -153,7 +146,7 @@ public class CarList {
 
     // EFFECTS: return list of all cars under or equal given price
     public CarList underCarPrice(int carPrice) {
-        CarList underCarPrice = new CarList("car");
+        CarList underCarPrice = new CarList();
         for (CarSettings car : this.cars) {
             if (car.getPrice() <= carPrice) {
                 underCarPrice.addCarToList(car);
@@ -174,13 +167,6 @@ public class CarList {
 //        return underCarPrice;
 //    }
 
-//
-//    // MODIFIES: this
-//    // EFFECTS: Method to sort the list by kilometers used, with original order stays same
-//    public void sortCarsByKmUsed() {
-//        Comparator<CarSettings> kmUsedComparator = Comparator.comparingInt(CarSettings::getKmUsed);
-//        Collections.sort(cars, kmUsedComparator.thenComparing(Comparator.naturalOrder()));
-//    }
 }
 
 
