@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class CarShopApp {
     private Scanner input;
-//    private CarSettings car1;
-//    private CarSettings car2;
-//    private CarSettings car3;
-//    private CarSettings car4;
+    private CarSettings car1;
+    private CarSettings car2;
+    private CarSettings car3;
+    private CarSettings car4;
     private CarList carList;
     private String info;
     private int num;
@@ -24,14 +24,18 @@ public class CarShopApp {
     // MODIFIES: this
     // EFFECTS: initializes car settings
     private void init() {
-//        this.car1 = new CarSettings("Lada copeyka", 1000, "blue", 2000, 10000);
-//        this.car2 = new CarSettings("Koenigsegg", 4000000, "carbon", 2023, 0);
-//        this.car3 = new CarSettings("BMW", 120000, "race green", 2000, 100);
-//        this.car4 = new CarSettings("Porsche 911 GT3 RS", 300000,
-//                "blue", 2022, 4000);
+        this.car1 = new CarSettings("Lada copeyka", 1000, "blue", 2000, 10000);
+        this.car2 = new CarSettings("Koenigsegg", 4000000, "carbon", 2023, 0);
+        this.car3 = new CarSettings("BMW", 120000, "race green", 2000, 100);
+        this.car4 = new CarSettings("Porsche 911 GT3 RS", 300000,
+                "blue", 2022, 4000);
         input = new Scanner(System.in);
         carList = new CarList("car");
         input.useDelimiter("\n");
+        carList.addCarToList(car1);
+        carList.addCarToList(car2);
+        carList.addCarToList(car3);
+        carList.addCarToList(car4);
     }
 
 
@@ -51,6 +55,7 @@ public class CarShopApp {
         System.out.println("\tc -> Find a car by color");
         System.out.println("\ty -> Find a car by car year");
         System.out.println("\tk -> Find a car by mileage");
+        System.out.println("\ts -> Show list of all cars");
         System.out.println("\tq -> quit");
     }
 
@@ -60,6 +65,7 @@ public class CarShopApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> Add cars for sale");
         System.out.println("\tr -> Remove cars available for sale");
+        System.out.println("\ts -> Show list of all cars");
         System.out.println("\tq -> quit");
     }
 
@@ -101,40 +107,14 @@ public class CarShopApp {
     // EFFECTS: show final list of car
     public void showFinal(CarList cars) {
         Scanner input = new Scanner(System.in);
-        String word = "y";
+        String word = "Car";
         for (CarSettings car : cars.getCars()) {
             System.out.println(word + ": " + "The brand of car:" + car.getCarBrand() + "\t" + "The price of car: "
                     + car.getPrice() + "\t" + "The color of car:" + car.getColor() + "\t" + "The year of car:"
                     + car.getCarYear() + "\t" + "The mileage of car:" + car.getKmUsed() + "\t");
-            input.next();
         }
-
-        input.close();
     }
 
-
-//        // EFFECTS: menu list sort by what
-//        public String sortBy () {
-//            System.out.println("Show the list or sort by:");
-//            System.out.println("\ty -> yes, show list");
-//            System.out.println("\tm -> sort by mileage");
-//            input = new Scanner(System.in);
-//            info = input.nextLine();
-//            return info;
-//        }
-//
-//        // EFFECTS: user sorting action
-//        public void sort(CarList car){
-//            String pop = sortBy();
-//            if (pop.equals("y")) {
-//                showFinal(car);
-//            } else if (pop.equals("m")) {
-//                car.sortCarsByKmUsed();
-//                showFinal(car);
-//            } else {
-//                System.out.println("Invalid choice.");
-//            }
-//        }
 
 
 //    // EFFECTS: menu to choose whether to sort or display the list
@@ -158,7 +138,7 @@ public class CarShopApp {
 
     // EFFECTS: seller adds/removes using CarBrand
     public String getCarBrand() {
-        System.out.println("Type -car-:"); // WTF doesn't work
+        System.out.println("Car brand:"); // WTF doesn't work
         input = new Scanner(System.in);
         info = input.nextLine();
         return info;
@@ -243,6 +223,8 @@ public class CarShopApp {
             addCar();
         } else if (command.equals("r")) {
             removeCar();
+        } else if (command.equals("s")) {
+            listAllCars();
         } else {
             System.out.println("Selection failed");
         }
@@ -316,6 +298,8 @@ public class CarShopApp {
             doYear();
         } else if (command.equals("k")) {
             doKm();
+        } else if (command.equals("s")) {
+            listAllCars();
         } else {
             System.out.println("Selection failed");
         }

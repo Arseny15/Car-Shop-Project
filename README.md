@@ -33,7 +33,7 @@ Also, it's really convinient to find cars by using different settings.
 - Find a car by price
 - Find a car by color
 - Find a car by car year
-- Sort the result in terms of km
+- Find a car by km used
 - Check all options avaliable
 
 
@@ -43,7 +43,7 @@ Also, it's really convinient to find cars by using different settings.
 - As a user, I want to be able to search a car by car name.
 - As a user, I want to be able to find car in terms of car brand name, color,car year, km used.
 - As a user, I want to be able to view a list of all car choices.
-- As a user, I want to be able to save the car and add it to the list of cars which I like.
+- As a user, I want to be able to add it to the list of cars which I like.
 - As a user(seller), I want to be able to add сars for sale to the app.
 - As a user(seller), I want to be able to remove a posted сars for sale.
 

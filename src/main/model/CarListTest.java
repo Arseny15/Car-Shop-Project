@@ -297,8 +297,6 @@ public class CarListTest {
         CarList result = carList.underCarPrice(15000);
 
         assertEquals(3, carList.getNumOfCars());
-//        assertTrue(result.contains(new CarSettings("CarA", 20000,"blue", 2000, 10000)));
-//        assertTrue(result.contains(new CarSettings("CarC", 12000,"blue", 2000, 10000)));
     }
 
 
