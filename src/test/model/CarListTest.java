@@ -5,10 +5,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarListTest {
     private CarList testCarListAll;
@@ -48,9 +48,9 @@ public class CarListTest {
         assertEquals("BMW", car3.getCarBrand());
     }
 
+
     @Test
     void testAddCarToList() {
-        assertEquals(0, testCarListEmpty.getNumOfCars());
         assertTrue(testCarListEmpty.getCars().isEmpty());
 
         testCarListEmpty.addCarToList(car1);
@@ -65,10 +65,23 @@ public class CarListTest {
     }
 
     @Test
-    void testFindSpecCar() {
-        assertEquals(car2, testCarListAll.findSpecCar("Koenigsegg", 4000000,
-                "carbon", 2023, 1));
+    void testAddCarToListMore() {
+        testCarListAll.addCarToList(new CarSettings("Lada", 11, "blue", 2000, 10));
+        assertEquals(5,testCarListAll.getNumOfCars());
+    }
 
+
+    @Test
+    void testFindSpecCarFailed() {
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada",
+                100, "green", 200, 1000));
+
+        assertEquals(null, testCarListAll.findSpecCar("BMW",
+                100, "green", 200, 1000));
+    }
+
+    @Test
+    void testFindSpecCar() {
         CarSettings specCarFound = testCarListOnlyOne.findSpecCar("Lada copeyka",
                 1000, "blue", 2000, 10000);
         assertEquals("Lada copeyka", specCarFound.getCarBrand());
@@ -76,11 +89,24 @@ public class CarListTest {
         assertEquals("blue", specCarFound.getColor());
         assertEquals(2000, specCarFound.getCarYear());
         assertEquals(10000, specCarFound.getKmUsed());
+    }
+
+    @Test
+    void testFindSpecCarConstants() {
+        assertEquals(car2, testCarListAll.findSpecCar("Koenigsegg", 4000000,
+                "carbon", 2023, 1));
 
         assertEquals(car1, testCarListOnlyOne.findSpecCar("Lada copeyka", 1000,
                 "blue", 2000, 10000));
     }
 
+
+    @Test
+    void testRemoveCarFromListFailed() {
+        testCarListOnlyOne.removeCarFromList("Lada ", 1000,
+                "blue", 2000, 10000);
+        assertEquals(1, testCarListOnlyOne.getCars().size());
+    }
 
     @Test
     void testRemoveCarFromList() {
@@ -95,8 +121,9 @@ public class CarListTest {
         assertEquals(3, testCarListAll.getNumOfCars());
     }
 
+
     @Test
-    void testSameCarsByBrandNone() {
+    void testSameCarsByBrandFailed() {
         testCarListEmpty = testCarListAll.sameCarBrand("ajjdbndj");
         assertEquals(0, testCarListEmpty.getNumOfCars());
     }
@@ -124,7 +151,7 @@ public class CarListTest {
 
 
     @Test
-    void testSameCarColorContainsNone() {
+    void testSameCarColorContainsFailed() {
         testCarListEmpty = testCarListAll.sameCarColor("yellow");
         assertEquals(0, testCarListEmpty.getNumOfCars());
     }
@@ -143,8 +170,8 @@ public class CarListTest {
 
     @Test
     void testSameCarColor() {
-        testCarListEmpty = testCarListAll.sameCarColor("blue");
         CarList sameColor = new CarList();
+        testCarListEmpty = testCarListAll.sameCarColor("blue");
         sameColor.addCarToList(car1);
         sameColor.addCarToList(car4);
         assertEquals(sameColor.getCars(), testCarListEmpty.getCars());
@@ -155,7 +182,7 @@ public class CarListTest {
 
 
     @Test
-    void testCarsWithGivenYearContainsNone() {
+    void testCarsWithGivenYearContainsFailed() {
         testCarListEmpty = testCarListAll.carsWithGivenYear(2029);
         assertEquals(0, testCarListEmpty.getNumOfCars());
     }
@@ -174,8 +201,8 @@ public class CarListTest {
 
     @Test
     void testCarsWithGivenYear() {
-        testCarListEmpty = testCarListAll.carsWithGivenYear(2000);
         CarList sameYear = new CarList();
+        testCarListEmpty = testCarListAll.carsWithGivenYear(2000);
         sameYear.addCarToList(car1);
         sameYear.addCarToList(car3);
         assertEquals(sameYear.getCars(), testCarListEmpty.getCars());
@@ -186,7 +213,7 @@ public class CarListTest {
 
 
     @Test
-    void testUnderKmContainNone() {
+    void testUnderKmContainFailed() {
         testCarListEmpty = testCarListAll.underKmUse(0);
         assertEquals(0, testCarListEmpty.getNumOfCars());
     }
@@ -206,8 +233,8 @@ public class CarListTest {
     @Test
     void testUnderKmUseBoundary() {
         // use constants
-        testCarListEmpty = testCarListAll.underKmUse(15000);
         CarList sameKm = new CarList();
+        testCarListEmpty = testCarListAll.underKmUse(15000);
         sameKm.addCarToList(car1);
         sameKm.addCarToList(car2);
         sameKm.addCarToList(car3);
@@ -222,7 +249,7 @@ public class CarListTest {
 
 
     @Test
-    void testUnderCarPriceContainNone() {
+    void testUnderCarPriceContainFailed() {
         testCarListEmpty = testCarListAll.underCarPrice(1);
         assertEquals(0, testCarListEmpty.getNumOfCars());
     }
@@ -241,13 +268,14 @@ public class CarListTest {
 
     @Test
     void testUnderCarPriceMax() {
-        testCarListEmpty = testCarListAll.underCarPrice(130000);
         CarList samePrice = new CarList();
+        testCarListEmpty = testCarListAll.underCarPrice(130000);
         samePrice.addCarToList(car1);
         samePrice.addCarToList(car3);
         assertEquals(samePrice.getCars(), testCarListEmpty.getCars());
         assertEquals(2, testCarListEmpty.getNumOfCars());
         assertEquals(car1, testCarListEmpty.getCars().get(0));
         assertEquals(car3, testCarListEmpty.getCars().get(1));
+
     }
 }

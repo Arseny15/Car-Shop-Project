@@ -17,7 +17,7 @@ public class CarList {
     }
 
     // MODIFIES: this
-    // EFFECTS: add car to the list, no duplicates
+    // EFFECTS: add car to the list, duplicates allowed
     public void addCarToList(CarSettings car) {
         if (!this.cars.contains(car)) {
             this.cars.add(car);
@@ -43,7 +43,7 @@ public class CarList {
     }
 
     // MODIFIES: this
-    // EFFECTS: remove car from the list of cars
+    // EFFECTS: remove cars from the list of cars
     public void removeCarFromList(String carBrand, int price, String color, int carYear, int kmUsed) {
         CarSettings specCar = findSpecCar(carBrand, price, color, carYear, kmUsed);
         this.cars.remove(specCar);
@@ -68,7 +68,7 @@ public class CarList {
 //    public CarList sameCarBrand(String carBrand) {
 //        List<CarSettings> carsWithSameBrand = new ArrayList<>();
 //        for (CarSettings car : this.cars) {
-//            if (carBrand.equals(car.getCarBrand())) {
+//            if (carBrand == car.getCarBrand())) {
 //                carsWithSameBrand.add(car);
 //            }
 //        }
@@ -79,7 +79,7 @@ public class CarList {
 //    public CarList sameCarColor(String color) {
 //        List<CarSettings> carsWithSameColor = new ArrayList<>();
 //        for (CarSettings car : this.cars) {
-//            if (color.equals(car.getColor())) {
+//            if (color == car.getColor())) {
 //                carsWithSameColor.add(car);
 //            }
 //        }
