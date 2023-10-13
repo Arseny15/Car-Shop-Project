@@ -1,11 +1,10 @@
 package model;
 
-//import model.CarList;
-//import model.CarSettings;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -227,7 +226,7 @@ public class CarListTest {
 
         CarList result = carList.underKmUse(10000);
 
-        assertEquals(3, carList.getNumOfCars());
+        assertEquals(3, result.getNumOfCars());
     }
 
     @Test
