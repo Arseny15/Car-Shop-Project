@@ -53,6 +53,7 @@ public class CarListTest {
         assertTrue(testCarListEmpty.getCars().isEmpty());
 
         testCarListEmpty.addCarToList(car1);
+        testCarListEmpty.addCarToList(car1);
         assertEquals("Lada copeyka", car1.getCarBrand());
         assertEquals(1000, car1.getPrice());
         assertEquals("blue", car1.getColor());
