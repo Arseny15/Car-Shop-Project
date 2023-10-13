@@ -17,7 +17,7 @@ public class CarList {
     }
 
     // MODIFIES: this
-    // EFFECTS: add car to the list, duplicates allowed
+    // EFFECTS: add car to the list, no duplicates
     public void addCarToList(CarSettings car) {
         if (!this.cars.contains(car)) {
             this.cars.add(car);

@@ -42,17 +42,26 @@ public class CarListTest {
 
     @Test
     void testConstructor() {
+        assertTrue(testCarListEmpty.getCars().isEmpty());
         assertEquals(0, testCarListEmpty.getNumOfCars());
+        assertEquals(1, testCarListOnlyOne.getNumOfCars());
         assertEquals(car1, testCarListOnlyOne.getCars().get(0));
         assertEquals("BMW", car3.getCarBrand());
     }
 
 
     @Test
-    void testAddCarToList() {
-        assertTrue(testCarListEmpty.getCars().isEmpty());
-
+    void testAddCarToListFail() {
         testCarListEmpty.addCarToList(car1);
+        testCarListEmpty.addCarToList(car1);
+        testCarListEmpty.addCarToList(car1);
+        List<CarSettings> cars = testCarListEmpty.getCars();
+        assertEquals(1, cars.size());
+        assertEquals(car1, cars.get(0));
+    }
+
+    @Test
+    void testAddCarToList() {
         testCarListEmpty.addCarToList(car1);
         assertEquals("Lada copeyka", car1.getCarBrand());
         assertEquals(1000, car1.getPrice());
@@ -73,11 +82,11 @@ public class CarListTest {
 
     @Test
     void testFindSpecCarFailed() {
-//        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada",
-//                100, "green", 200, 1000));
-//
-//        assertEquals(null, testCarListAll.findSpecCar("BMW",
-//                100, "green", 200, 1000));
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada",
+                100, "green", 200, 1000));
+
+        assertEquals(null, testCarListAll.findSpecCar("BMW",
+                100, "green", 200, 1000));
 
         assertNull(testCarListOnlyOne.findSpecCar("Lada",
                 100, "green", 200, 1000));
