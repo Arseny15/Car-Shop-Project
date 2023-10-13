@@ -89,8 +89,18 @@ public class CarListTest {
         assertEquals(null, testCarListAll.findSpecCar("BMW",
                 100, "green", 200, 1000));
 
-        assertNull(testCarListOnlyOne.findSpecCar("Lada",
-                100, "green", 200, 1000));
+        assertEquals(null, testCarListOnlyOne.findSpecCar("La",
+                100, "blue", 2000, 10000));
+
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada copeyka",
+                100, "blue", 2000, 10000));
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada copeyka",
+                1000, "green", 2000, 10000));
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada copeyka",
+                1000, "blue", 20, 10000));
+        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada copeyka",
+                1000, "blue", 2000, 100));
+
     }
 
     @Test
