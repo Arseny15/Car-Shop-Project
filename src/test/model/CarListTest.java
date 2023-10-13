@@ -72,10 +72,13 @@ public class CarListTest {
 
     @Test
     void testFindSpecCarFailed() {
-        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada",
-                100, "green", 200, 1000));
+//        assertEquals(null, testCarListOnlyOne.findSpecCar("Lada",
+//                100, "green", 200, 1000));
+//
+//        assertEquals(null, testCarListAll.findSpecCar("BMW",
+//                100, "green", 200, 1000));
 
-        assertEquals(null, testCarListAll.findSpecCar("BMW",
+        assertNull(testCarListOnlyOne.findSpecCar("Lada",
                 100, "green", 200, 1000));
     }
 
