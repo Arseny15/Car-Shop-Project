@@ -47,6 +47,7 @@ public class CarListTest {
         assertEquals(1, testCarListOnlyOne.getNumOfCars());
         assertEquals(car1, testCarListOnlyOne.getCars().get(0));
         assertEquals("BMW", car3.getCarBrand());
+        assertFalse(testCarListAll.getCars().isEmpty());
     }
 
 
