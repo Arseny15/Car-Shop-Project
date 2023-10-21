@@ -4,7 +4,7 @@ import model.CarList;
 import model.CarSettings;
 
 import java.util.Scanner;
-
+// add class level comments
 public class CarShopApp {
     private Scanner input;
     private CarSettings car1;

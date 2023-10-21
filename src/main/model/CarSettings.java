@@ -1,5 +1,5 @@
 package model;
-
+// add class level comments
 public class CarSettings {
     private String carBrand;
     private int price;
