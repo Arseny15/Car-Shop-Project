@@ -2,9 +2,15 @@ package ui;
 
 import model.CarList;
 import model.CarSettings;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
-// add class level comments
+
+// CarShopApp class represents Car shop application.
+// Allows us to play with the program.
 public class CarShopApp {
     private Scanner input;
     private CarSettings car1;
@@ -15,9 +21,14 @@ public class CarShopApp {
     private String info;
     private int num;
 
+    private static final String JSON_STORE = "./data/carList.json";
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: runs the car shop application
-    public CarShopApp() {
+    public CarShopApp() throws FileNotFoundException {
         runCarShop();
     }
 
@@ -36,6 +47,9 @@ public class CarShopApp {
         carList.addCarToList(car2);
         carList.addCarToList(car3);
         carList.addCarToList(car4);
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
 
@@ -44,6 +58,8 @@ public class CarShopApp {
         System.out.println("\nSelect from:");
         System.out.println("\tu -> users");
         System.out.println("\ts -> sellers");
+        System.out.println("\tf -> save car list to file");
+        System.out.println("\tl -> load car list from file ");
         System.out.println("\tq -> quit");
     }
 
@@ -74,9 +90,7 @@ public class CarShopApp {
     private void runCarShop() {
         boolean keepGoing = true;
         String command = null;
-
         init();
-
         while (keepGoing) {
             displayMenu();
             command = input.next();
@@ -89,20 +103,21 @@ public class CarShopApp {
             } else if (command.equals("s")) {
                 displayMenuSellers();
                 processCommandSeller();
+            } else if (command.equals("f")) {
+                saveCarListToFile();
+            } else if (command.equals("l")) {
+                loadCarListFromFile();
             } else {
                 keepGoing = false;
             }
-            System.out.println("\nBye!");
         }
     }
-
 
     // EFFECTS: show the list of all cars
     public void listAllCars() {
         showFinal(carList);
         System.out.println("All options presented!");
     }
-
 
     // EFFECTS: show final list of car
     public void showFinal(CarList cars) {
@@ -112,8 +127,6 @@ public class CarShopApp {
                     + car.getCarYear() + "\t" + "The mileage of car: " + car.getKmUsed() + "\t");
         }
     }
-
-
 
     // EFFECTS: seller adds/removes using CarBrand
     public String getCarBrand() {
@@ -154,7 +167,6 @@ public class CarShopApp {
         num = input.nextInt();
         return num;
     }
-
 
     // EFFECTS: seller add cars for sale
     // (must be different car settings)
@@ -283,6 +295,29 @@ public class CarShopApp {
             listAllCars();
         } else {
             System.out.println("Selection failed");
+        }
+    }
+
+    // EFFECTS: saves the car list to file
+    private void saveCarListToFile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(carList);
+            jsonWriter.close();
+            System.out.println("Saved car list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads car list from file
+    private void loadCarListFromFile() {
+        try {
+            carList = jsonReader.read();
+            System.out.println("Loaded car list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

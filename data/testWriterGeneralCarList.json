@@ -1,0 +1,16 @@
+{"returns cars": [
+    {
+        "carBrand": "Lada copeyka",
+        "color": "blue",
+        "price": 1000,
+        "carYear": 2000,
+        "mileage": 10000
+    },
+    {
+        "carBrand": "Koenigsegg",
+        "color": "carbon",
+        "price": 4000000,
+        "carYear": 2023,
+        "mileage": 1
+    }
+]}

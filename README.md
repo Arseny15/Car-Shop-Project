@@ -47,3 +47,6 @@ Also, it's really convinient to find cars by using different settings.
 - As a user(seller), I want to be able to add сars for sale to the app.
 - As a user(seller), I want to be able to remove a posted сars for sale.
 
+- As a user(seller), I want to be able to save my car list to file (if I so choose)
+- As a user(seller), I want to be able to be able to load my car list from file (if I so choose)
+

@@ -1,6 +1,11 @@
 package model;
-// add class level comments
-public class CarSettings {
+
+import org.json.JSONObject;
+import persistence.Writable;
+
+// Car setting class creates a car with it is car Setting.
+// Such as: car brand, price, color, car year, km used.
+public class CarSettings implements Writable {
     private String carBrand;
     private int price;
     private String color;
@@ -34,6 +39,17 @@ public class CarSettings {
 
     public int getKmUsed() {
         return this.kmUsed;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("carBrand", carBrand);
+        json.put("price", price);
+        json.put("color", color);
+        json.put("carYear", carYear);
+        json.put("mileage", kmUsed);
+        return json;
     }
 }
 

@@ -1,0 +1,32 @@
+{
+  "returns cars": [
+    {
+      "carBrand": "Lada copeyka",
+      "price": 1000,
+      "color": "blue",
+      "carYear": 2000,
+      "mileage": 10000
+    },
+    {
+      "carBrand": "Koenigsegg",
+      "price": 4000000,
+      "color": "carbon",
+      "carYear": 2023,
+      "mileage": 0
+    },
+    {
+      "carBrand": "BMW",
+      "price": 120000,
+      "color": "race green",
+      "carYear": 2000,
+      "mileage": 100
+    },
+    {
+      "carBrand": "Porsche 911 GT3 RS",
+      "price": 300000,
+      "color": "blue",
+      "carYear": 2022,
+      "mileage": 4000
+    }
+  ]
+}

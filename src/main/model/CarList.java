@@ -1,9 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
-// add class level comments
-public class CarList {
+
+// CarList class represents the list of cars for user and seller. It allows for both of them different functionality.
+// User can sort by: car brand, price, color, car year, km used. Also, user can see all options presented.
+// Car seller can: add cars for sale using Car settings, and he can remove their posts.
+public class CarList implements Writable {
     private List<CarSettings> cars;
 
 
@@ -66,7 +73,6 @@ public class CarList {
     }
 
 
-
     // EFFECTS: return list of all cars with same carColor
     public CarList sameCarColor(String color) {
         CarList carsWithSameColo = new CarList();
@@ -114,6 +120,24 @@ public class CarList {
         return underCarPrice;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("returns cars", carsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns car settings in this carList as a JSON array
+    private JSONArray carsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (CarSettings t : cars) {
+            jsonArray.put(t.toJson());
+        }
+        return jsonArray;
+    }
+
 }
+
+
 
 
