@@ -5,7 +5,7 @@ import model.CarList;
 import java.io.*;
 
 
-// Represents a writer that writes JSON representation of workroom to file
+// Represents a writer that writes JSON representation of carList to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -24,7 +24,7 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of carList to file
     public void write(CarList cl) {
         JSONObject json = cl.toJson();
         saveToFile(json.toString(TAB));
