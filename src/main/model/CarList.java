@@ -49,6 +49,16 @@ public class CarList implements Writable {
         return null;
     }
 
+    public boolean carExists(String carBrand, int price, String color, int year, int mileage) {
+        for (CarSettings car : cars) {
+            if (car.getCarBrand().equals(carBrand) && car.getPrice() == price && car.getColor().equals(color)
+                    && car.getCarYear() == year && car.getKmUsed() == mileage) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // MODIFIES: this
     // EFFECTS: remove cars from the list of cars
     public void removeCarFromList(String carBrand, int price, String color, int carYear, int kmUsed) {

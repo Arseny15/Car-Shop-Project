@@ -1,1 +1,16 @@
-{"returns cars": []}
+{"returns cars": [
+    {
+        "carBrand": "bmw",
+        "color": "blue",
+        "price": 12,
+        "carYear": 2003,
+        "mileage": 123
+    },
+    {
+        "carBrand": "uas",
+        "color": "blue",
+        "price": 12,
+        "carYear": 2003,
+        "mileage": 123
+    }
+]}
