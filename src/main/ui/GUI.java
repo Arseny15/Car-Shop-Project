@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class GUI extends JFrame {
     public static final int WIDTH = 1500;
-    public static final int HEIGHT = 1500;
+    public static final int HEIGHT = 700;
     private JDesktopPane desk;
 
     private CarList carList = new CarList();
@@ -83,35 +83,37 @@ public class GUI extends JFrame {
     // EFFECTS: creates panel for sellers
     public JPanel sellersSection() {
         JPanel panel = new JPanel();
-        panel.setBackground(new java.awt.Color(165, 168, 180));
+        panel.setBackground(new java.awt.Color(225, 223, 223));
         panel.setForeground(Color.black);
         JLabel label = new JLabel("Car Sellers:  ");
         label.setFont(new Font("Calibre", Font.BOLD, 30));
         panel.add(label).setBounds(550, 0, 100, 50);
 
 
-        panel.add(carBrandLabel).setBounds(100, 70, 160, 20);
-        panel.add(textBrand).setBounds(140, 70, 160, 20);
+        panel.add(carBrandLabel); //.setBounds(100, 70, 160, 20);
+        panel.add(textBrand); //.setBounds(140, 70, 160, 20);
 
-        panel.add(priceLabel).setBounds(180, 100, 160, 20);
-        panel.add(textPrice).setBounds(220, 100, 160, 20);
+        panel.add(priceLabel); //.setBounds(180, 100, 160, 20);
+        panel.add(textPrice); //.setBounds(220, 100, 160, 20);
 
-        panel.add(colorLabel).setBounds(260, 130, 160, 20);
-        panel.add(textColor).setBounds(280, 130, 160, 20);
+        panel.add(colorLabel); //.setBounds(260, 130, 160, 20);
+        panel.add(textColor); //.setBounds(280, 130, 160, 20);
 
-        panel.add(carYearLabel).setBounds(300, 160, 160, 20);
-        panel.add(textCarYear).setBounds(320, 160, 160, 20);
+        panel.add(carYearLabel); //.setBounds(300, 160, 160, 20);
+        panel.add(textCarYear); //.setBounds(320, 160, 160, 20);
 
-        panel.add(mileageLabel).setBounds(340, 190, 160, 20);
-        panel.add(textMileage).setBounds(360, 190, 160, 20);
+        panel.add(mileageLabel); //.setBounds(340, 190, 160, 20);
+        panel.add(textMileage); //.setBounds(360, 190, 160, 20);
 
-        panel.add(addCar).setBounds(380, 220, 160, 30);
-        panel.add(removeCar).setBounds(400, 250, 160, 30);
+        panel.add(addCar); //.setBounds(380, 220, 160, 30);
+        panel.add(removeCar); //setBounds(400, 250, 160, 30);
 
-        panel.add(saveCars).setBounds(480, 400, 100, 50);
-//        panel.add(loadCars).setBounds(540, 440, 100, 50);
+        panel.add(saveCars); //.setBounds(480, 400, 100, 50);
+        panel.add(loadCars); //.setBounds(520, 420, 100, 50);
 
-        panel.add(showAllCars).setBounds(500, 420, 100, 50);
+        panel.add(showAllCars); //.setBounds(500, 420, 100, 50);
+
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         return panel;
     }
@@ -120,25 +122,27 @@ public class GUI extends JFrame {
     // EFFECTS: creates panel for users
     public JPanel usersSection() {
         JPanel panelU = new JPanel();
-        panelU.setBackground(new java.awt.Color(139, 159, 232));
+        panelU.setBackground(new java.awt.Color(207, 217, 255));
         panelU.setForeground(Color.black);
         JLabel label = new JLabel("Potential car buyers:  ");
         label.setFont(new Font("Calibre", Font.BOLD, 30));
         panelU.add(label).setBounds(750, 750, 100, 50);
 
-        panelU.add(carBrand).setBounds(440, 270, 100, 20);
-        panelU.add(carPrice).setBounds(440, 270, 100, 20);
-        panelU.add(carColor).setBounds(440, 270, 100, 20);
-        panelU.add(carYear).setBounds(440, 270, 100, 20);
-        panelU.add(mileage).setBounds(440, 270, 100, 20);
+        panelU.add(carBrand); //.setBounds(440, 270, 100, 20);
+        panelU.add(carPrice); //.setBounds(440, 270, 100, 20);
+        panelU.add(carColor); //.setBounds(440, 270, 100, 20);
+        panelU.add(carYear); //.setBounds(440, 270, 100, 20);
+        panelU.add(mileage); //.setBounds(440, 270, 100, 20);
 
-        panelU.add(search).setBounds(460, 300, 160, 30);
+        panelU.add(search); //.setBounds(460, 300, 160, 30);
 
-        panelU.add(findCar).setBounds(480, 400, 100, 50);
+        panelU.add(findCar); //.setBounds(480, 400, 100, 50);
 
-        panelU.add(loadCars).setBounds(420, 230, 100, 50);
+        panelU.add(loadCars); //.setBounds(420, 230, 100, 50);
 
-        panelU.add(showAllCars).setBounds(450, 260, 100, 50);
+        panelU.add(showAllCars); //.setBounds(450, 260, 100, 50);
+
+        panelU.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         return panelU;
     }

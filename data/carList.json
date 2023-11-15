@@ -2,15 +2,15 @@
     {
         "carBrand": "bmw",
         "color": "blue",
-        "price": 12,
+        "price": 1,
         "carYear": 2003,
-        "mileage": 123
+        "mileage": 1
     },
     {
         "carBrand": "uas",
-        "color": "blue",
-        "price": 12,
-        "carYear": 2003,
-        "mileage": 123
+        "color": "green",
+        "price": 1,
+        "carYear": 2,
+        "mileage": 1
     }
 ]}
