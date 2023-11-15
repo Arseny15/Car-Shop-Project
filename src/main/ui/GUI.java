@@ -65,18 +65,19 @@ public class GUI extends JFrame {
         desk = new JDesktopPane();
         desk.setBackground(new java.awt.Color(255, 255, 255));
         desk.addMouseListener(new DesktopFocusAction());
+        setContentPane(desk);
+        setSize(WIDTH, HEIGHT);
+        add(sellersSection()).setBounds(0, 0, WIDTH, HEIGHT / 2);
+        add(usersSection()).setBounds(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
 
         mainButtonSettings();
 
-        setContentPane(desk);
         setTitle("Car shop Application");
-        setSize(WIDTH, HEIGHT);
+
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
-        add(sellersSection()).setBounds(0, 0, WIDTH, HEIGHT / 2);
-        add(usersSection()).setBounds(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
     }
 
     // MODIFIES: this
@@ -90,28 +91,26 @@ public class GUI extends JFrame {
         panel.add(label).setBounds(550, 0, 100, 50);
 
 
-        panel.add(carBrandLabel); //.setBounds(100, 70, 160, 20);
-        panel.add(textBrand); //.setBounds(140, 70, 160, 20);
+        panel.add(carBrandLabel);
+        panel.add(textBrand);
 
-        panel.add(priceLabel); //.setBounds(180, 100, 160, 20);
-        panel.add(textPrice); //.setBounds(220, 100, 160, 20);
+        panel.add(priceLabel);
+        panel.add(textPrice);
 
-        panel.add(colorLabel); //.setBounds(260, 130, 160, 20);
-        panel.add(textColor); //.setBounds(280, 130, 160, 20);
+        panel.add(colorLabel);
+        panel.add(textColor);
 
-        panel.add(carYearLabel); //.setBounds(300, 160, 160, 20);
-        panel.add(textCarYear); //.setBounds(320, 160, 160, 20);
+        panel.add(carYearLabel);
+        panel.add(textCarYear);
 
-        panel.add(mileageLabel); //.setBounds(340, 190, 160, 20);
-        panel.add(textMileage); //.setBounds(360, 190, 160, 20);
+        panel.add(mileageLabel);
+        panel.add(textMileage);
 
-        panel.add(addCar); //.setBounds(380, 220, 160, 30);
-        panel.add(removeCar); //setBounds(400, 250, 160, 30);
+        panel.add(addCar);
+        panel.add(removeCar);
 
-        panel.add(saveCars); //.setBounds(480, 400, 100, 50);
-        panel.add(loadCars); //.setBounds(520, 420, 100, 50);
-
-        panel.add(showAllCars); //.setBounds(500, 420, 100, 50);
+        panel.add(saveCars);
+        panel.add(showAllCars);
 
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
@@ -128,19 +127,19 @@ public class GUI extends JFrame {
         label.setFont(new Font("Calibre", Font.BOLD, 30));
         panelU.add(label).setBounds(750, 750, 100, 50);
 
-        panelU.add(carBrand); //.setBounds(440, 270, 100, 20);
-        panelU.add(carPrice); //.setBounds(440, 270, 100, 20);
-        panelU.add(carColor); //.setBounds(440, 270, 100, 20);
-        panelU.add(carYear); //.setBounds(440, 270, 100, 20);
-        panelU.add(mileage); //.setBounds(440, 270, 100, 20);
+        panelU.add(carBrand);
+        panelU.add(carPrice);
+        panelU.add(carColor);
+        panelU.add(carYear);
+        panelU.add(mileage);
 
-        panelU.add(search); //.setBounds(460, 300, 160, 30);
+        panelU.add(search);
 
-        panelU.add(findCar); //.setBounds(480, 400, 100, 50);
+        panelU.add(findCar);
 
-        panelU.add(loadCars); //.setBounds(420, 230, 100, 50);
+        panelU.add(loadCars);
 
-        panelU.add(showAllCars); //.setBounds(450, 260, 100, 50);
+        panelU.add(showAllCars);
 
         panelU.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
