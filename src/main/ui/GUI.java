@@ -16,7 +16,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+// GUI class creates a running window with different functionalities for car shop application. Mainly with two panels:
+// for sellers and buyers, also there is a visual component which you can see by pressing the button in buyer panel.
 public class GUI extends JFrame {
     public static final int WIDTH = 1500;
     public static final int HEIGHT = 700;
@@ -85,6 +86,7 @@ public class GUI extends JFrame {
 
     }
 
+
     // MODIFIES: this
     // EFFECTS: creates panel for sellers
     public JPanel sellersSection() {
@@ -123,7 +125,6 @@ public class GUI extends JFrame {
     }
 
 
-
     // MODIFIES: this
     // EFFECTS: creates panel for users
     public JPanel usersSection() {
@@ -156,6 +157,7 @@ public class GUI extends JFrame {
         return panelU;
     }
 
+    // EFFECTS: set all the buttons to their functions
     public void mainButtonSettings() {
         findCar.addActionListener(new FindCar());
 
@@ -172,6 +174,8 @@ public class GUI extends JFrame {
         showImage.addActionListener(new CreateImage());
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates an image
     private class CreateImage implements ActionListener {
 
         @Override
@@ -261,6 +265,7 @@ public class GUI extends JFrame {
         }
     }
 
+    // EFFECTS: check if the car (car settings) is valid for adding
     public boolean addValidNewCar() {
         CarSettings car;
         String carBrand = textBrand.getText();
@@ -308,7 +313,7 @@ public class GUI extends JFrame {
         }
     }
 
-
+    // EFFECTS: check if the car (car settings) is valid for removing
     public boolean removeValidCar() {
         int mileage = Integer.parseInt(textMileage.getText());
         int year = Integer.parseInt(textCarYear.getText());
@@ -477,7 +482,7 @@ public class GUI extends JFrame {
                 + car.getCarYear() + "   The mileage of car: " + car.getKmUsed());
     }
 
-
+    // Make the mouse work on the desk
     private class DesktopFocusAction extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -485,7 +490,7 @@ public class GUI extends JFrame {
         }
     }
 
-    // starts the application
+    // EFFECTS: starts the application
     public static void main(String[] args) {
         new GUI();
     }
