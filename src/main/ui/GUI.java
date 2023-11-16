@@ -297,7 +297,7 @@ public class GUI extends JFrame {
                     label.setFont(new Font("Calibre", Font.BOLD, 17));
                     frame.add(label).setBounds(600, 300, 200, 40);
                 } else {
-                    JLabel label = new JLabel("Mission completed!");
+                    JLabel label = new JLabel("Car is added!");
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
                     frame.add(label).setBounds(600, 300, 80, 40);
                 }
@@ -343,7 +343,7 @@ public class GUI extends JFrame {
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
                     frame.add(label).setBounds(600, 300, 80, 30);
                 } else {
-                    JLabel label = new JLabel("Mission completed!");
+                    JLabel label = new JLabel("Car is removed!");
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
                     frame.add(label).setBounds(600, 300, 80, 30);
                 }
@@ -362,10 +362,10 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             if ("Save cars to the file".equals(evt.getActionCommand())) {
                 JFrame frame = new JFrame("Result: ");
-                frame.setSize(300, 150);
+                frame.setSize(300, 100);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
-                JLabel label = new JLabel("Mission completed!");
+                JLabel label = new JLabel("Cars are saved!");
 
                 try {
                     jsonWriter.open();
@@ -391,10 +391,10 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             if ("Load cars from the file".equals(evt.getActionCommand())) {
                 JFrame frame = new JFrame("Result: ");
-                frame.setSize(300, 150);
+                frame.setSize(450, 150);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
-                JLabel label = new JLabel("Mission completed!");
+                JLabel label = new JLabel("Cars are loaded from the file!");
 
                 try {
                     carList = jsonReader.read();
