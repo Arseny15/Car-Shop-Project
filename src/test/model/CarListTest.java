@@ -389,14 +389,43 @@ public class CarListTest {
 
     @Test
     void testUnderCarPriceMax() {
-        CarList samePrice = new CarList();
+        CarList sameUnderPrice = new CarList();
         testCarListEmpty = testCarListAll.underCarPrice(130000);
-        samePrice.addCarToList(car1);
-        samePrice.addCarToList(car3);
-        assertEquals(samePrice.getCars(), testCarListEmpty.getCars());
+        sameUnderPrice.addCarToList(car1);
+        sameUnderPrice.addCarToList(car3);
+        assertEquals(sameUnderPrice.getCars(), testCarListEmpty.getCars());
         assertEquals(2, testCarListEmpty.getNumOfCars());
         assertEquals(car1, testCarListEmpty.getCars().get(0));
         assertEquals(car3, testCarListEmpty.getCars().get(1));
 
+    }
+
+    @Test
+    void testSameCarPriceFailed() {
+        testCarListEmpty = testCarListAll.sameCarPrice(1);
+        assertEquals(0, testCarListEmpty.getNumOfCars());
+    }
+
+    @Test
+    void testSameCarPriceNewVar() {
+        CarList carList = new CarList();
+        carList.addCarToList(new CarSettings("CarA", 20000, "blue", 2000, 10000));
+        carList.addCarToList(new CarSettings("CarB", 25000, "blue", 2000, 10000));
+        carList.addCarToList(new CarSettings("CarC", 12000, "blue", 2000, 10000));
+
+        CarList result = carList.sameCarPrice(12000);
+
+        assertEquals(1, result.getNumOfCars());
+    }
+
+    @Test
+    void testSameCarPriceMax() {
+        CarList samePrice = new CarList();
+        testCarListEmpty = testCarListAll.sameCarPrice(1000);
+        samePrice.addCarToList(car1);
+        samePrice.addCarToList(car3);
+//        assertEquals(car1, testCarListEmpty.getCars());
+        assertEquals(1, testCarListEmpty.getNumOfCars());
+        assertEquals(car1, testCarListEmpty.getCars().get(0));
     }
 }

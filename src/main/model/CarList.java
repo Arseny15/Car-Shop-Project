@@ -130,6 +130,17 @@ public class CarList implements Writable {
         return underCarPrice;
     }
 
+    // EFFECTS: return list of all cars equal given price
+    public CarList sameCarPrice(int carPrice) {
+        CarList underCarPrice = new CarList();
+        for (CarSettings car : cars) {
+            if (car.getPrice() == carPrice) {
+                underCarPrice.addCarToList(car);
+            }
+        }
+        return underCarPrice;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -34,8 +34,6 @@ public class GUI extends JFrame {
     private JLabel carYearLabel = new JLabel("Car year");
     private JLabel mileageLabel = new JLabel("Mileage");
 
-    private JLabel imageLabel = new JLabel("Dream car");
-
     private JButton findCar = new JButton("Find car");
     private JButton addCar = new JButton("Add car for sale");
     private JButton removeCar = new JButton("Remove car from sale list");
@@ -56,7 +54,8 @@ public class GUI extends JFrame {
     private CarList sortBy = new CarList();
 
     private JCheckBox carBrand = new JCheckBox("By car brand");
-    private JCheckBox carPrice = new JCheckBox("By price");
+    private JCheckBox carPriceEqual = new JCheckBox("By same car price");
+    private JCheckBox carPrice = new JCheckBox("Sort by under or equal specific price");
     private JCheckBox carColor = new JCheckBox("By color");
     private JCheckBox carYear = new JCheckBox("By car year");
     private JCheckBox mileage = new JCheckBox("By mileage");
@@ -136,6 +135,7 @@ public class GUI extends JFrame {
         panelU.add(label).setBounds(750, 750, 100, 50);
 
         panelU.add(carBrand);
+        panelU.add(carPriceEqual);
         panelU.add(carPrice);
         panelU.add(carColor);
         panelU.add(carYear);
@@ -416,6 +416,8 @@ public class GUI extends JFrame {
     private void processCommandSearch() {
         if (carBrand.isSelected()) {
             doCarBrand();
+        } else if (carPriceEqual.isSelected()) {
+            doCarPriceEqual();
         } else if (carPrice.isSelected()) {
             doCarPrice();
         } else if (carColor.isSelected()) {
@@ -434,7 +436,15 @@ public class GUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: search by car price
+    // EFFECTS: search by same car price
+    private void doCarPriceEqual() {
+        int price = Integer.parseInt(search.getText());
+        sortBy = carList.sameCarPrice(price);
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: search by car price, equal or under
     private void doCarPrice() {
         int price = Integer.parseInt(search.getText());
         sortBy = carList.underCarPrice(price);
