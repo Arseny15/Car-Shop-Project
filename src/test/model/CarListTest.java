@@ -104,6 +104,51 @@ public class CarListTest {
     }
 
     @Test
+    void testCarExists() {
+        CarSettings car1 = new CarSettings("Lada copeyka",
+                100, "blue", 2000, 10000);
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car1);
+
+        assertTrue(testCarListEmpty.carExists("Lada copeyka",
+                100, "blue", 2000, 10000));
+        assertFalse(testCarListEmpty.carExists("BMW",
+                100, "green", 200, 1000));
+    }
+
+    @Test
+    void testCarExistsM() {
+        CarSettings car1 = new CarSettings("Lada copeyka",
+                100, "blue", 2000, 10000);
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car1);
+        testCarListEmpty.addCarToList(car2);
+
+        assertTrue(testCarListEmpty.carExists("Lada copeyka",
+                100, "blue", 2000, 10000));
+        assertTrue(testCarListEmpty.carExists("BMW",
+                100, "green", 200, 1000));
+    }
+
+    @Test
+    void testCarExistsF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("Lada copeyka",
+                100, "blue", 2000, 10000));
+    }
+
+
+
+
+    @Test
     void testFindSpecCar() {
         CarSettings specCarFound = testCarListOnlyOne.findSpecCar("Lada copeyka",
                 1000, "blue", 2000, 10000);
