@@ -50,3 +50,26 @@ Also, it's really convinient to find cars by using different settings.
 - As a user(seller), I want to be able to save my car list to file (if I so choose)
 - As a user(seller), I want to be able to be able to load my car list from file (if I so choose)
 
+## Instructions for grader
+- You can generate the first required action related to the user story: Add/Remove cars by filling up the fields in 
+seller section: car brand, car price, car color, car year, mileage.
+
+
+- You can generate the second required action related to the user story: Use JCheckBox in potential car buyers section
+for sorting cars by: car brand, price, color, car year, mileage.
+
+
+- You can locate my visual component by pressing the button "SHOW IMAGE of DREAM CAR".
+
+
+- You can save the state of my application by:
+1. In Car Sellers panel, add a new car by filling up the fields(Car brand, Car price, Car color, Car year, Mileage).
+2. Press button "Add car for sale"
+3. Repeat steps 1,2 if you would like to add many cars
+4. Press button "Save cars to the file"
+
+- You can reload the state of my application by removing all cars from the file. 
+- Two choices:
+1. Press button "Load cars from the file" in Potential car buyers panel.
+2. Fill up all fields and press "Remove car from sale list", until the list of cars is empty. 
+3. Press "Save cars to the file", therefore, you will save empty list => reload the state.

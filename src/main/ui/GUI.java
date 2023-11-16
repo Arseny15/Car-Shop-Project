@@ -5,12 +5,14 @@ import model.CarSettings;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -32,12 +34,16 @@ public class GUI extends JFrame {
     private JLabel carYearLabel = new JLabel("Car year");
     private JLabel mileageLabel = new JLabel("Mileage");
 
+    private JLabel imageLabel = new JLabel("Dream car");
+
     private JButton findCar = new JButton("Find car");
     private JButton addCar = new JButton("Add car for sale");
     private JButton removeCar = new JButton("Remove car from sale list");
     private JButton showAllCars = new JButton("Show list of all cars");
     private JButton saveCars = new JButton("Save cars to the file");
     private JButton loadCars = new JButton("Load cars from the file");
+
+    private JButton showImage = new JButton("SHOW IMAGE of DREAM CAR");
 
     private JTextField search = new JTextField("", 20);
 
@@ -117,6 +123,8 @@ public class GUI extends JFrame {
         return panel;
     }
 
+
+
     // MODIFIES: this
     // EFFECTS: creates panel for users
     public JPanel usersSection() {
@@ -141,29 +149,52 @@ public class GUI extends JFrame {
 
         panelU.add(showAllCars);
 
+        panelU.add(showImage);
+
         panelU.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         return panelU;
     }
 
     public void mainButtonSettings() {
-        findCar.setActionCommand("Find car");
         findCar.addActionListener(new FindCar());
 
-        addCar.setActionCommand("Add car for sale");
         addCar.addActionListener(new AddCar());
 
-        removeCar.setActionCommand("Remove car from sale list");
         removeCar.addActionListener(new RemoveCar());
 
-        showAllCars.setActionCommand("Show list of all cars");
         showAllCars.addActionListener(new ShowAllCars());
 
-        saveCars.setActionCommand("Save cars to the file");
         saveCars.addActionListener((new SaveCars()));
 
-        loadCars.setActionCommand("Load cars from the file");
         loadCars.addActionListener(new LoadCars());
+
+        showImage.addActionListener(new CreateImage());
+    }
+
+    private class CreateImage implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            if ("SHOW IMAGE of DREAM CAR".equals(evt.getActionCommand())) {
+                JFrame imageFrame = new JFrame("Dream car (HOW TO EARN?)");
+                imageFrame.setSize(1100, 600);
+                imageFrame.setLocationRelativeTo(null);
+                imageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                JLabel imageLabel = new JLabel();
+
+                try {
+                    Image img = ImageIO.read(new File("./data/carPic.jpg"));
+                    ImageIcon imageIcon = new ImageIcon(img);
+                    imageLabel.setIcon(imageIcon);
+                    imageFrame.add(imageLabel);
+                    imageFrame.setVisible(true);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 
@@ -257,14 +288,14 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             if ("Add car for sale".equals(evt.getActionCommand())) {
                 JFrame frame = new JFrame("Result: ");
-                frame.setSize(300, 100);
+                frame.setSize(350, 100);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
 
                 if (!addValidNewCar()) {
                     JLabel label = new JLabel("Mission incomplete! Car already exist");
-                    label.setFont(new Font("Calibre", Font.BOLD, 24));
-                    frame.add(label).setBounds(600, 300, 150, 40);
+                    label.setFont(new Font("Calibre", Font.BOLD, 17));
+                    frame.add(label).setBounds(600, 300, 200, 40);
                 } else {
                     JLabel label = new JLabel("Mission completed!");
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
@@ -303,18 +334,18 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             if ("Remove car from sale list".equals(evt.getActionCommand())) {
                 JFrame frame = new JFrame("Result: ");
-                frame.setSize(300, 150);
+                frame.setSize(300, 100);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
 
                 if (!removeValidCar()) {
                     JLabel label = new JLabel("Mission incomplete!");
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
-                    frame.add(label).setBounds(600, 300, 80, 40);
+                    frame.add(label).setBounds(600, 300, 80, 30);
                 } else {
                     JLabel label = new JLabel("Mission completed!");
                     label.setFont(new Font("Calibre", Font.BOLD, 24));
-                    frame.add(label).setBounds(600, 300, 80, 40);
+                    frame.add(label).setBounds(600, 300, 80, 30);
                 }
                 frame.setResizable(true);
                 frame.setVisible(true);
