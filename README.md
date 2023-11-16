@@ -56,7 +56,7 @@ seller section: car brand, car price, car color, car year, mileage.
 
 
 - You can generate the second required action related to the user story: Use JCheckBox in potential car buyers section
-for sorting cars by: car brand, price, color, car year, mileage.
+for sorting cars by: car brand, same car price, under or equal specific price, color, car year, mileage.
 
 
 - You can locate my visual component by pressing the button "SHOW IMAGE of DREAM CAR".
