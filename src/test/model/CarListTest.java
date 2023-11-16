@@ -424,7 +424,6 @@ public class CarListTest {
         testCarListEmpty = testCarListAll.sameCarPrice(1000);
         samePrice.addCarToList(car1);
         samePrice.addCarToList(car3);
-//        assertEquals(car1, testCarListEmpty.getCars());
         assertEquals(1, testCarListEmpty.getNumOfCars());
         assertEquals(car1, testCarListEmpty.getCars().get(0));
     }
