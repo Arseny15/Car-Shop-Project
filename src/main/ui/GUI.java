@@ -55,7 +55,7 @@ public class GUI extends JFrame {
 
     private JCheckBox carBrand = new JCheckBox("By car brand");
     private JCheckBox carPriceEqual = new JCheckBox("By same car price");
-    private JCheckBox carPrice = new JCheckBox("Sort by under or equal specific price");
+    private JCheckBox carPrice = new JCheckBox("By under and equal specific price");
     private JCheckBox carColor = new JCheckBox("By color");
     private JCheckBox carYear = new JCheckBox("By car year");
     private JCheckBox mileage = new JCheckBox("By mileage");
@@ -444,7 +444,7 @@ public class GUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: search by car price, equal or under
+    // EFFECTS: search by car price, equal and under
     private void doCarPrice() {
         int price = Integer.parseInt(search.getText());
         sortBy = carList.underCarPrice(price);

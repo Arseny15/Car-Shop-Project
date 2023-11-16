@@ -119,7 +119,7 @@ public class CarList implements Writable {
     }
 
 
-    // EFFECTS: return list of all cars under or equal given price
+    // EFFECTS: return list of all cars under and equal given price
     public CarList underCarPrice(int carPrice) {
         CarList underCarPrice = new CarList();
         for (CarSettings car : cars) {
