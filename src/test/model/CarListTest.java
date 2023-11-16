@@ -142,10 +142,63 @@ public class CarListTest {
         testCarListEmpty.addCarToList(car2);
 
         assertEquals(false, testCarListEmpty.carExists("Lada copeyka",
-                100, "blue", 2000, 10000));
+                10, "blue", 2000, 10000));
     }
 
+    @Test
+    void testCarExistsFF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
 
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("A",
+                100, "green", 200, 1000));
+    }
+
+    @Test
+    void testCarExistsFFF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("BMW",
+                0, "green", 200, 1000));
+    }
+
+    @Test
+    void testCarExistsFFFF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("BMW",
+                100, "blue", 200, 1000));
+    }
+
+    @Test
+    void testCarExistsFFFFF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("BMW",
+                100, "green", 0, 1000));
+    }
+
+    @Test
+    void testCarExistsFFFFFF() {
+        CarSettings car2 = new CarSettings("BMW",
+                100, "green", 200, 1000);
+
+        testCarListEmpty.addCarToList(car2);
+
+        assertEquals(false, testCarListEmpty.carExists("BMW",
+                100, "green", 200, 0));
+    }
 
 
     @Test
