@@ -1,8 +1,10 @@
 package model;
 
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,8 @@ public class CarList implements Writable {
     public void addCarToList(CarSettings car) {
         if (!this.cars.contains(car)) {
             this.cars.add(car);
+            EventLog provider = EventLog.getInstance();
+            provider.logEvent(new Event("A car -> " + car + " was added."));
         }
     }
 
@@ -65,6 +69,8 @@ public class CarList implements Writable {
     public void removeCarFromList(String carBrand, int price, String color, int carYear, int kmUsed) {
         CarSettings specCar = findSpecCar(carBrand, price, color, carYear, kmUsed);
         this.cars.remove(specCar);
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("A car -> " + specCar + " was removed."));
     }
 
     //EFFECTS: return a size of the list = return how many cars in the list
@@ -80,6 +86,9 @@ public class CarList implements Writable {
                 carsWithSameBrand.addCarToList(car);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by the same car brand -> " + carBrand
+                + " were found."));
         return carsWithSameBrand;
     }
 
@@ -92,6 +101,9 @@ public class CarList implements Writable {
                 carsWithSameColo.addCarToList(colorCar);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by the same color of the car -> "
+                + color + " were found."));
         return carsWithSameColo;
     }
 
@@ -104,6 +116,9 @@ public class CarList implements Writable {
                 carsSameYear.addCarToList(car);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by the same year of the car -> " + year
+                + " were found."));
         return carsSameYear;
     }
 
@@ -116,6 +131,8 @@ public class CarList implements Writable {
                 carsUnderMaxKm.addCarToList(car);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by mileage -> " + km + " were found."));
         return carsUnderMaxKm;
     }
 
@@ -128,6 +145,9 @@ public class CarList implements Writable {
                 underCarPrice.addCarToList(car);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by under and equal the price of the car -> "
+                + carPrice + " were found."));
         return underCarPrice;
     }
 
@@ -139,6 +159,9 @@ public class CarList implements Writable {
                 underCarPrice.addCarToList(car);
             }
         }
+        EventLog provider = EventLog.getInstance();
+        provider.logEvent(new Event("Cars were filtered by the same price of the car -> " + carPrice
+                + " were found."));
         return underCarPrice;
     }
 
