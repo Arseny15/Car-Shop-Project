@@ -15,7 +15,7 @@ public class Event {
     /**
      * Creates an event with the given description
      * and the current date/time stamp.
-     * @param description  a description of the event
+     * @param description a description of the event
      */
     public Event(String description) {
         dateLogged = Calendar.getInstance().getTime();
