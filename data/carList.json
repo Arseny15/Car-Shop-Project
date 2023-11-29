@@ -1,7 +1,1 @@
-{"returns cars": [{
-    "carBrand": "bmw",
-    "color": "blue",
-    "price": 10,
-    "carYear": 2000,
-    "mileage": 10
-}]}
+{"returns cars": []}

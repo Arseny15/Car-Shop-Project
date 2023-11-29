@@ -2,23 +2,19 @@ package ui;
 
 import model.CarList;
 import model.CarSettings;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import model.Event;
 import model.EventLog;
-import model.LogException;
 
 // GUI class creates a running window with different functionalities for car shop application. Mainly with two panels:
 // for sellers and buyers, also there is a visual component which you can see by pressing the button in buyer panel.
@@ -48,7 +44,6 @@ public class GUI extends JFrame {
 
     private JButton showImage = new JButton("SHOW IMAGE of DREAM CAR");
 
-    private JButton logAction = new JButton("Print log");
 
     private JTextField search = new JTextField("", 20);
 
@@ -93,19 +88,26 @@ public class GUI extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        eventLogResult();
 
     }
 
-    /**
-     * Helper to create print options combo box
-     * @return  the combo box
-     */
-    private JComboBox<String> createPrintCombo() {
-        printCombo = new JComboBox<String>();
-        printCombo.addItem(FILE_DESCRIPTOR);
-        printCombo.addItem(SCREEN_DESCRIPTOR);
-        return printCombo;
+    // EFFECTS: creates the EventLog results on the console after GUI closed
+    public void eventLogResult() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                EventLog eventLog = EventLog.getInstance();
+
+                System.out.println("Printing EventLog results:");
+                for (Event event : eventLog) {
+                    System.out.println(event.toString());
+                }
+            }
+        }
+        );
     }
+
 
 
     // MODIFIES: this
@@ -174,8 +176,6 @@ public class GUI extends JFrame {
 
         panelU.add(showImage);
 
-        panelU.add(logAction);
-
         panelU.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         return panelU;
@@ -196,8 +196,6 @@ public class GUI extends JFrame {
         loadCars.addActionListener(new LoadCars());
 
         showImage.addActionListener(new CreateImage());
-
-        logAction.addActionListener(new PrintLogAction());
     }
 
     // MODIFIES: this
@@ -442,35 +440,6 @@ public class GUI extends JFrame {
     }
 
 
-    // sourse: AlarmSysteme
-    /**
-     * Represents the action to be taken when the user wants to
-     * print the event log.
-     */
-    private class PrintLogAction extends AbstractAction {
-        PrintLogAction() {
-            super("Print log to...");
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            String selected = (String) printCombo.getSelectedItem();
-            LogPrinter lp;
-            try {
-                if (selected.equals(FILE_DESCRIPTOR)) {
-                    lp = new FilePrinter();
-                } else {
-                    lp = new ScreenPrint(GUI.this);
-                    desk.add((GUI) lp);
-                }
-
-                lp.printLog(EventLog.getInstance());
-            } catch (LogException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "System Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
 
 
     // MODIFIES: this

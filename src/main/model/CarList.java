@@ -31,7 +31,9 @@ public class CarList implements Writable {
         if (!this.cars.contains(car)) {
             this.cars.add(car);
             EventLog provider = EventLog.getInstance();
-            provider.logEvent(new Event("A car -> " + car + " was added."));
+            provider.logEvent(new Event("A car -> " + car.getCarBrand() + ", " + car.getPrice()
+                    + " car price, " + car.getColor() + ", "
+                    + car.getCarYear() + " car year, " + car.getKmUsed() + " mileage, was added."));
         }
     }
 
@@ -70,7 +72,9 @@ public class CarList implements Writable {
         CarSettings specCar = findSpecCar(carBrand, price, color, carYear, kmUsed);
         this.cars.remove(specCar);
         EventLog provider = EventLog.getInstance();
-        provider.logEvent(new Event("A car -> " + specCar + " was removed."));
+        provider.logEvent(new Event("A car -> " + carBrand + ", " + price
+                + " car price, " + color + ", "
+                + carYear + " car year, " + kmUsed + " mileage, was removed."));
     }
 
     //EFFECTS: return a size of the list = return how many cars in the list
@@ -118,7 +122,7 @@ public class CarList implements Writable {
         }
         EventLog provider = EventLog.getInstance();
         provider.logEvent(new Event("Cars were filtered by the same year of the car -> " + year
-                + " were found."));
+                + " this year car was found."));
         return carsSameYear;
     }
 
@@ -132,7 +136,8 @@ public class CarList implements Writable {
             }
         }
         EventLog provider = EventLog.getInstance();
-        provider.logEvent(new Event("Cars were filtered by mileage -> " + km + " were found."));
+        provider.logEvent(new Event("Cars were filtered by mileage -> " + km
+                + " a car with such mileage was found."));
         return carsUnderMaxKm;
     }
 
@@ -147,7 +152,7 @@ public class CarList implements Writable {
         }
         EventLog provider = EventLog.getInstance();
         provider.logEvent(new Event("Cars were filtered by under and equal the price of the car -> "
-                + carPrice + " were found."));
+                + carPrice + " under or equal such price cars were found"));
         return underCarPrice;
     }
 
@@ -161,7 +166,7 @@ public class CarList implements Writable {
         }
         EventLog provider = EventLog.getInstance();
         provider.logEvent(new Event("Cars were filtered by the same price of the car -> " + carPrice
-                + " were found."));
+                + " equal such price cars were found"));
         return underCarPrice;
     }
 

@@ -74,3 +74,9 @@ car year, mileage.
 1. Press button "Load cars from the file" in Potential car buyers panel.
 2. Fill up all fields and press "Remove car from sale list", until the list of cars is empty. 
 3. Press "Save cars to the file", therefore, you will save empty list => reload the state.
+
+## Phase 4: Task 3
+Firstly, my GUI doesn't look perfect since the whole project was something new to learn, i shouldn't use JDeskopPane in 
+such way. 
+Right now, I understand more about composite pattern which i could've use in my project with try-catch. This will make 
+more clear structure of the project. 
