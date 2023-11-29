@@ -88,24 +88,22 @@ public class GUI extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        eventLogResult();
 
+        addWindowListener(new EventLogResult());
     }
 
-    // EFFECTS: creates the EventLog results on the console after GUI closed
-    public void eventLogResult() {
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                EventLog eventLog = EventLog.getInstance();
+    private class EventLogResult extends WindowAdapter {
+        // EFFECTS: creates the EventLog results on the console after GUI closed
 
-                System.out.println("Printing EventLog results:");
-                for (Event event : eventLog) {
-                    System.out.println(event.toString());
-                }
+        @Override
+        public void windowClosing(WindowEvent evt) {
+            EventLog eventLog = EventLog.getInstance();
+            System.out.println("Printing EventLog results:");
+
+            for (Event event: eventLog) {
+                System.out.println(event.toString());
             }
         }
-        );
     }
 
 
