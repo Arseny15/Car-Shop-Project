@@ -62,9 +62,6 @@ public class GUI extends JFrame {
     private JCheckBox carYear = new JCheckBox("By car year");
     private JCheckBox mileage = new JCheckBox("By mileage");
 
-    private JComboBox<String> printCombo;
-    private static final String FILE_DESCRIPTOR = "...file";
-    private static final String SCREEN_DESCRIPTOR = "...screen";
 
 
     // MODIFIES: this

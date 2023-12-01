@@ -31,7 +31,7 @@ public class EventLog implements Iterable<Event> {
      * (Singleton Design Pattern)
      * @return  instance of EventLog
      */
-    public static EventLog getInstance() {
+    public static EventLog getInstance() {  //static -> accesable of the class itself
         if (theLog == null) {
             theLog = new EventLog();
         }
