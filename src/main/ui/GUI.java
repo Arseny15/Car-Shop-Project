@@ -70,18 +70,30 @@ public class GUI extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
-        desk = new JDesktopPane();
-        desk.setBackground(new java.awt.Color(255, 255, 255));
-        desk.addMouseListener(new DesktopFocusAction());
-        setContentPane(desk);
-        setSize(WIDTH, HEIGHT);
-        add(sellersSection()).setBounds(0, 0, WIDTH, HEIGHT / 2);
-        add(usersSection()).setBounds(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
+//        desk = new JDesktopPane();
+//        desk.setBackground(new java.awt.Color(255, 255, 255));
+//        desk.addMouseListener(new DesktopFocusAction());
+//        setContentPane(desk);
+//        setSize(WIDTH, HEIGHT);
+//        add(sellersSection()).setBounds(0, 0, WIDTH, HEIGHT / 2);
+//        add(usersSection()).setBounds(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
+
+//        sellersSection(); // panel
+//        usersSection(); // panel
+
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(((int) d.getWidth() - 722) / 2, ((int) d.getHeight() - 401) / 2,1000,885);
+        setLayout(null);
+        add(sellersSection()).setBounds(15,25,470,725);
+        add(usersSection()).setBounds(515,25,470,725);
+
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setResizable(false);
 
         mainButtonSettings();
 
         setTitle("Car shop Application");
-
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
