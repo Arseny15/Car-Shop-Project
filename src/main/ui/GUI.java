@@ -19,21 +19,17 @@ import model.EventLog;
 // GUI class creates a running window with different functionalities for car shop application. Mainly with two panels:
 // for sellers and buyers, also there is a visual component which you can see by pressing the button in buyer panel.
 public class GUI extends JFrame {
-    public static final int WIDTH = 1500;
-    public static final int HEIGHT = 700;
-    private JDesktopPane desk;
-
     private CarList carList = new CarList();
 
     private static final String JSON_STORE = "./data/carList.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    private JLabel carBrandLabel = new JLabel("Car brand");
-    private JLabel priceLabel = new JLabel("Car price");
-    private JLabel colorLabel = new JLabel("Car color");
-    private JLabel carYearLabel = new JLabel("Car year");
-    private JLabel mileageLabel = new JLabel("Mileage");
+    private JLabel carBrandLabel = new JLabel("Car brand    ->");
+    private JLabel priceLabel = new JLabel("Car price    ->");
+    private JLabel colorLabel = new JLabel("Car color    ->");
+    private JLabel carYearLabel = new JLabel("Car year    ->");
+    private JLabel mileageLabel = new JLabel("Mileage    ->");
 
     private JButton findCar = new JButton("Find car");
     private JButton addCar = new JButton("Add car for sale");
@@ -55,12 +51,12 @@ public class GUI extends JFrame {
 
     private CarList sortBy = new CarList();
 
-    private JCheckBox carBrand = new JCheckBox("By car brand");
-    private JCheckBox carPriceEqual = new JCheckBox("By same car price");
-    private JCheckBox carPrice = new JCheckBox("By under and equal specific price");
-    private JCheckBox carColor = new JCheckBox("By color");
-    private JCheckBox carYear = new JCheckBox("By car year");
-    private JCheckBox mileage = new JCheckBox("By mileage");
+    private JRadioButton carBrand = new JRadioButton("By car brand",true);
+    private JRadioButton carPriceEqual = new JRadioButton("By same car price");
+    private JRadioButton carPrice = new JRadioButton("By under and equal specific price");
+    private JRadioButton carColor = new JRadioButton("By color");
+    private JRadioButton carYear = new JRadioButton("By car year");
+    private JRadioButton mileage = new JRadioButton("By mileage");
 
 
 
@@ -70,34 +66,19 @@ public class GUI extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
-//        desk = new JDesktopPane();
-//        desk.setBackground(new java.awt.Color(255, 255, 255));
-//        desk.addMouseListener(new DesktopFocusAction());
-//        setContentPane(desk);
-//        setSize(WIDTH, HEIGHT);
-//        add(sellersSection()).setBounds(0, 0, WIDTH, HEIGHT / 2);
-//        add(usersSection()).setBounds(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
-
-//        sellersSection(); // panel
-//        usersSection(); // panel
-
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(((int) d.getWidth() - 722) / 2, ((int) d.getHeight() - 401) / 2,1000,885);
         setLayout(null);
-        add(sellersSection()).setBounds(15,25,470,725);
-        add(usersSection()).setBounds(515,25,470,725);
+        add(sellersSection()).setBounds(15,25,470,800);
+        add(usersSection()).setBounds(515,25,470,800);
 
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
 
         mainButtonSettings();
-
         setTitle("Car shop Application");
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-
         addWindowListener(new EventLogResult());
     }
 
@@ -116,41 +97,39 @@ public class GUI extends JFrame {
     }
 
 
-
     // MODIFIES: this
     // EFFECTS: creates panel for sellers
     public JPanel sellersSection() {
         JPanel panel = new JPanel();
+        panel.setLayout(null);
         panel.setBackground(new java.awt.Color(225, 223, 223));
         panel.setForeground(Color.black);
         JLabel label = new JLabel("Car Sellers:  ");
-        label.setFont(new Font("Calibre", Font.BOLD, 30));
-        panel.add(label).setBounds(550, 0, 100, 50);
+        label.setFont(new Font("Calibre", Font.BOLD, 20));
+        panel.add(label).setBounds(205,20,300,20);;
 
 
+        panel.add(carBrandLabel).setBounds(120,70, 100, 50);
+        panel.add(textBrand).setBounds(240,80, 100, 35);
 
-        panel.add(carBrandLabel);
-        panel.add(textBrand);
+        panel.add(priceLabel).setBounds(120,150, 100, 50);
+        panel.add(textPrice).setBounds(240,160, 100, 35);
 
-        panel.add(priceLabel);
-        panel.add(textPrice);
+        panel.add(colorLabel).setBounds(120,230, 100, 50);
+        panel.add(textColor).setBounds(240, 240, 100, 35);
 
-        panel.add(colorLabel);
-        panel.add(textColor);
+        panel.add(carYearLabel).setBounds(120, 310, 100, 50);
+        panel.add(textCarYear).setBounds(240, 320, 100, 35);
 
-        panel.add(carYearLabel);
-        panel.add(textCarYear);
+        panel.add(mileageLabel).setBounds(120, 390, 100, 50);
+        panel.add(textMileage).setBounds(240, 400, 100, 35);
 
-        panel.add(mileageLabel);
-        panel.add(textMileage);
 
-        panel.add(addCar);
-        panel.add(removeCar);
+        panel.add(addCar).setBounds(40, 500, 400, 40);
 
-        panel.add(saveCars);
-        panel.add(showAllCars);
+        panel.add(removeCar).setBounds(40, 600, 400, 40);
 
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panel.add(saveCars).setBounds(40, 700, 400, 40);
 
         return panel;
     }
@@ -160,30 +139,32 @@ public class GUI extends JFrame {
     // EFFECTS: creates panel for users
     public JPanel usersSection() {
         JPanel panelU = new JPanel();
+        panelU.setLayout(null);
         panelU.setBackground(new java.awt.Color(207, 217, 255));
         panelU.setForeground(Color.black);
         JLabel label = new JLabel("Potential car buyers:  ");
-        label.setFont(new Font("Calibre", Font.BOLD, 30));
-        panelU.add(label).setBounds(750, 750, 100, 50);
+        label.setFont(new Font("Calibre", Font.BOLD, 20));
+        panelU.add(label).setBounds(120, 6, 300, 50);
 
-        panelU.add(carBrand);
-        panelU.add(carPriceEqual);
-        panelU.add(carPrice);
-        panelU.add(carColor);
-        panelU.add(carYear);
-        panelU.add(mileage);
+        panelU.add(carBrand).setBounds(60, 100, 300, 50);
+        panelU.add(carPriceEqual).setBounds(250, 100, 300, 50);
 
-        panelU.add(search);
+        panelU.add(carPrice).setBounds(120, 200, 300, 50);
 
-        panelU.add(findCar);
+        panelU.add(carColor).setBounds(60, 300, 300, 50);
+        panelU.add(carYear).setBounds(200, 300, 300, 50);
+        panelU.add(mileage).setBounds(340, 300, 300, 50);
 
-        panelU.add(loadCars);
 
-        panelU.add(showAllCars);
 
-        panelU.add(showImage);
+        panelU.add(search).setBounds(270, 400, 100, 35);
 
-        panelU.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelU.add(findCar).setBounds(60, 400, 150, 40);
+
+        panelU.add(loadCars).setBounds(120, 500, 250, 60);
+
+        panelU.add(showAllCars).setBounds(120, 600, 250, 60);
+        panelU.add(showImage).setBounds(120, 700, 250, 60);
 
         return panelU;
     }
