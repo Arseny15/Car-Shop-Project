@@ -41,6 +41,7 @@ public class GUI extends JFrame {
     private JButton showImage = new JButton("SHOW IMAGE of DREAM CAR");
 
 
+
     private JTextField search = new JTextField("", 20);
 
     private JTextField textBrand = new JTextField("", 10);
